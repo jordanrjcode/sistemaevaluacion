@@ -137,6 +137,31 @@ const AuthState = (props) => {
   };
 
   //Funciones admin
+  const obtenerCalificaciones = async (data) => {
+    const { curso, carrera } = data;
+
+    try {
+      const respuesta = await clienteAxios.get(
+        `/api/admin/calificaciones/${curso}/${carrera}`
+      );
+      console.log(respuesta.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const obtenerEvaluacionesAdmin = async (data) => {
+    const { curso, carrera } = data;
+    try {
+      const respuesta = await clienteAxios.get(
+        `/api/admin/evaluaciones/${curso}/${carrera}`
+      );
+      console.log(respuesta.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   const adminAutenticado = async () => {
     dispatch({ type: CARGANDO });
 
@@ -310,6 +335,7 @@ const AuthState = (props) => {
         agregarEvaluacion,
         obtenerEvaluaciones,
         finalizarEvaluacion,
+        obtenerCalificaciones,
       }}
     >
       {props.children}

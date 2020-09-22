@@ -3,6 +3,7 @@ import Listadoopciones from "./Listadoopciones";
 import "./Administracion.css";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import GroupAddIcon from "@material-ui/icons/GroupAdd";
 const Administracion = () => {
   const [opcion, setOpcion] = useState("");
 
@@ -30,7 +31,16 @@ const Administracion = () => {
               click(e.target.name);
             }}
           >
-            Agregar estudiantes <AssignmentIndIcon fontSize="large" />
+            Agregar estudiantes <GroupAddIcon fontSize="large" />
+          </button>
+          <button
+            className="administracion__button"
+            name="calificacionEstudiantes"
+            onClick={(e) => {
+              click(e.target.name);
+            }}
+          >
+            Calificaciones <AssignmentIndIcon fontSize="large" />
           </button>
         </>
       ) : (

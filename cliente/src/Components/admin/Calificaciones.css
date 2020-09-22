@@ -1,0 +1,17 @@
+.calificacion__title {
+  font-size: 2.4em;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.calificacion__select {
+  padding: 15px;
+  width: 100%;
+  border: 1px solid gray;
+  color: gray;
+  -webkit-appearance: none;
+  outline: none;
+  display: block;
+  margin: 0 auto;
+}

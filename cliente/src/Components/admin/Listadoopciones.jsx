@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import AgregarAlumnos from "./AgregarAlumnos";
 import AgregarEvaluacion from "./AgregarEvaluacion";
+import Calificaciones from "./Calificaciones";
 import AuthContext from "../../Context/users/authContext";
 import AlertaContext from "../../Context/alerta/alertaContext";
 import "./Listadoopciones.css";
@@ -14,6 +15,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
     carreras,
     mensaje,
     obtenerCarreras,
+    obtenerCalificaciones,
     obtenerCursos,
     agregandoAlumnos,
     agregarEvaluacion,
@@ -48,6 +50,14 @@ const Listadocursos = ({ setOpcion, opcion }) => {
         />
       );
       break;
+    case "calificacionEstudiantes":
+      componente = (
+        <Calificaciones
+          cursoSeleccionado={cursoSeleccionado}
+          carreraSeleccionada={carreraSeleccionada}
+        />
+      );
+      break;
     default:
       componente = null;
       break;
@@ -61,6 +71,8 @@ const Listadocursos = ({ setOpcion, opcion }) => {
       case "agregarEvaluacion":
         agregandoEvaluaciones();
         break;
+      case "calificacionEstudiantes":
+        obtenerCalificaciones();
       default:
         break;
     }
@@ -112,6 +124,21 @@ const Listadocursos = ({ setOpcion, opcion }) => {
     });
   };
 
+  const obteniendoCalificaciones = () => {
+    if (!carreraSeleccionada.trim()) {
+      mostrarAlerta("Escoja una carrera", "alerta__error");
+      return;
+    }
+    if (!cursoSeleccionado.trim()) {
+      mostrarAlerta("Escoja un curso", "alerta__error");
+      return;
+    }
+    obtenerCalificaciones({
+      curso: cursoSeleccionado,
+      carrera: carreraSeleccionada,
+    });
+  };
+
   return (
     <div className="lista">
       {alerta ? (
@@ -126,8 +153,6 @@ const Listadocursos = ({ setOpcion, opcion }) => {
       >
         <ArrowBackIcon fontSize="large" />{" "}
       </button>
-
-      {componente}
 
       <h2 className="lista__title">Seleccione una carrera !</h2>
       <select
@@ -174,6 +199,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
             })
           : null}
       </select>
+      {componente}
       <button
         className="lista__button"
         onClick={() => {
