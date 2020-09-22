@@ -9,6 +9,8 @@ const Calificacion = new Schema({
   respuestas: { type: Array, required: true },
   deshonestidad: { type: Number, required: true },
   puntosMenos: { type: Number, required: true },
+  carrera: { type: mongoose.Types.ObjectId, ref: "Carreras" },
+  curso: { type: mongoose.Types.ObjectId, ref: "Cursos" },
 });
 
 module.exports = mongoose.model("Calificaciones", Calificacion);

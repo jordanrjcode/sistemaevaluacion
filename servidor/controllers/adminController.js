@@ -1,5 +1,6 @@
 const Usuario = require("../models/usuarios");
 const Admin = require("../models/administradores");
+const Calificacion = require("../models/calificaciones");
 const Evaluacion = require("../models/evaluaciones");
 const Curso = require("../models/cursos");
 const Carrera = require("../models/carreras");
@@ -27,6 +28,17 @@ exports.agregarCarrera = async (req, res) => {
     res.json({ msg: "Agregando Carrera" });
   } catch (error) {
     res.send(500).json({ msg: "Hubo un error" });
+  }
+};
+
+exports.obtenerCarreras = async (req, res) => {
+  try {
+    const carreras = await Carrera.find();
+    if (carreras.length < 1)
+      return res.status(404).json({ msg: "No hay carreras aun" });
+    res.status(200).json({ carreras });
+  } catch (error) {
+    res.status(500).json({ msg: "Hubo un error" });
   }
 };
 
@@ -84,13 +96,37 @@ exports.agregarEvaluacion = async (req, res) => {
   }
 };
 
-exports.obtenerCarreras = async (req, res) => {
+exports.obtenerEvaluaciones = async (req, res) => {
+  const { curso, carrera } = req.params;
   try {
-    const carreras = await Carrera.find();
-    if (carreras.length < 1)
-      return res.status(404).json({ msg: "No hay carreras aun" });
-    res.status(200).json({ carreras });
+    let evaluaciones = Evaluacion.find({
+      $and: [{ curso }, { carrera }],
+    });
+    if (!evaluaciones) {
+      return res.status(404).json({ msg: "No hay evaluaciones" });
+    }
+    res.status(200).json({ evaluaciones });
   } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Hubo un error" });
+  }
+};
+
+exports.obtenerCalificaciones = async (req, res) => {
+  const { curso, carrera } = req.params;
+  try {
+    let calificaciones = await Calificacion.find({
+      $and: [{ curso }, { carrera }],
+    });
+
+    if (!calificaciones) {
+      return res
+        .status(404)
+        .json({ msg: "Nadie ha realizado esta evaluacion" });
+    }
+    res.status(200).json({ calificaciones });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ msg: "Hubo un error" });
   }
 };
@@ -146,25 +182,6 @@ exports.agregarEstudiante = async (req, res) => {
     res.status(500).json({ msg: "Hubo un error" });
   }
 };
-
-// exports.obtenerEstudiantes = (req, res) => {
-//   //Buscar los alumnos que sean del curso seleccionado
-//   //Enviar el listado de alumnos al cliente
-//   res.json({ msg: "Enviando los alumnos al cliente" });
-// };
-
-// exports.editarEstudiantes = (req, res) => {
-//   //Buscar si el id del alumno es valido
-//   //Validar los datos que vienen del body
-//   //Editar al estudiante y actualizar la base de datos
-//   res.json({ msg: "Editando estudiante" });
-// };
-
-// exports.eliminarEstudiante = (req, res) => {
-//   //Validar el id existe en la base de datos
-//   //Eliminando el estudiante de la base de datos
-//   res.json({ msg: "Eliminando estudiante" });
-// };
 
 exports.iniciarSesion = async (req, res) => {
   //Validar los datos que vienen en el body

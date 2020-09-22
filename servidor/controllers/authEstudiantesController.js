@@ -153,6 +153,8 @@ exports.finalizarEvaluacion = async (req, res) => {
 
     let newCalificacion = await Calificacion({
       estudiante,
+      curso: estudianteDB.curso,
+      carrera: estudianteDB.carrera,
       nombreEstudiante,
       evaluacion,
       nombreEvaluacion,

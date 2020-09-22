@@ -101,4 +101,16 @@ router.post(
   adminController.agregarEvaluacion
 );
 
+router.get(
+  "/evaluaciones/:curso/:carrera",
+  auth,
+  adminController.obtenerEvaluaciones
+);
+
+router.get(
+  "calificaciones/:curso/:carrera",
+  auth,
+  adminController.obtenerCalificaciones
+);
+
 module.exports = router;
