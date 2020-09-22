@@ -113,7 +113,7 @@ exports.obtenerEvaluaciones = async (req, res) => {
 };
 
 exports.obtenerCalificaciones = async (req, res) => {
-  const { curso, carrera } = req.params;
+  const { evaluacion } = req.params;
   try {
     let calificaciones = await Calificacion.find({
       $and: [{ curso }, { carrera }],
