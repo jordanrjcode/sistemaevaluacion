@@ -108,7 +108,7 @@ router.get(
 );
 
 router.get(
-  "calificaciones/:evaluacion",
+  "/calificaciones/:evaluacion",
   auth,
   adminController.obtenerCalificaciones
 );
