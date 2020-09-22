@@ -142,11 +142,11 @@ const AuthState = (props) => {
 
   //Funciones admin
   const obtenerCalificaciones = async (data) => {
-    const { curso, carrera } = data;
+    const { evaluacion } = data;
 
     try {
       const respuesta = await clienteAxios.get(
-        `/api/admin/calificaciones/${curso}/${carrera}`
+        `/api/admin/calificaciones/${evaluacion}`
       );
       console.log(respuesta.data);
       dispatch({
