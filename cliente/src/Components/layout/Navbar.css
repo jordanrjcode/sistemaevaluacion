@@ -1,0 +1,40 @@
+.navbar {
+  padding: 20px;
+  background: #3e3e3e;
+  color: white;
+  text-align: center;
+  max-height: 25vh;
+}
+@media only screen and (min-width: 576px) {
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.navbar__brand {
+  font-size: 2.8rem;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+.navbar__list {
+  text-align: center;
+  font-size: 1.8rem;
+}
+.list__item {
+  background: rgba(0, 0, 0, 0.4);
+  width: fit-content;
+  margin: 10px auto;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: block;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.list__item__active {
+  color: red;
+}

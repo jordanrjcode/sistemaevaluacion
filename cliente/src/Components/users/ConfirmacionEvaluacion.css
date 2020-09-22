@@ -1,0 +1,37 @@
+.confirmar__title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.confirmar__msg {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.confirmar__buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.confirmar__button {
+  font-size: 1.8rem;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 60px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+}
+
+.button__no {
+  background: tomato;
+}
+.button__yes {
+  background: dodgerblue;
+}

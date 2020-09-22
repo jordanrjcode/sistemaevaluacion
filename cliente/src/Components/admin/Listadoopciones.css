@@ -1,0 +1,60 @@
+.lista__back {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: gray;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  margin: 15px 0;
+  width: fit-content;
+  margin-right: auto;
+}
+.lista__title {
+  font-size: 2.4em;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.lista__cursos {
+  padding: 15px;
+  width: 100%;
+  border: 1px solid gray;
+  color: gray;
+  -webkit-appearance: none;
+  outline: none;
+  display: block;
+  margin: 0 auto;
+}
+.lista__button {
+  padding: 10px;
+  width: 100%;
+  display: block;
+  margin: 15px auto;
+  background: #636e72;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1.6rem;
+}
+.alerta {
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+.alerta__error {
+  background: red;
+}
+.alerta__ok {
+  background: #55e750;
+}
