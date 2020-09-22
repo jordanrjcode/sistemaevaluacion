@@ -24,6 +24,8 @@ import {
   OBTENER_EVALUACIONES_EXITO,
   OBTENER_LISTA_USUARIOS_ERROR,
   OBTENER_LISTA_USUARIOS_EXITO,
+  OBTENER_ADMIN_EVALUACIONES_EXITO,
+  OBTENER_ADMIN_CALIFICACIONES_EXITO,
   ENVIAR_EVALUACION,
   CARGANDO,
 } from "../../Types/index";
@@ -40,6 +42,8 @@ const AuthState = (props) => {
     cursos: null,
     cargando: false,
     listausuarios: null,
+    evaluacionesadmin: null,
+    calificacionesadmin: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, stateInicial);
 
@@ -145,8 +149,14 @@ const AuthState = (props) => {
         `/api/admin/calificaciones/${curso}/${carrera}`
       );
       console.log(respuesta.data);
+      dispatch({
+        type: OBTENER_ADMIN_CALIFICACIONES_EXITO,
+      });
     } catch (error) {
       console.log(error.response);
+      dispatch({
+        type: OBTENER_CURSOS_ERROR,
+      });
     }
   };
 
@@ -156,9 +166,15 @@ const AuthState = (props) => {
       const respuesta = await clienteAxios.get(
         `/api/admin/evaluaciones/${curso}/${carrera}`
       );
-      console.log(respuesta.data);
+      dispatch({
+        type: OBTENER_ADMIN_EVALUACIONES_EXITO,
+        payload: respuesta.data,
+      });
     } catch (error) {
       console.log(error.response);
+      dispatch({
+        type: OBTENER_CARRERAS_ERROR,
+      });
     }
   };
 
@@ -321,6 +337,8 @@ const AuthState = (props) => {
         datosexcel: state.datosexcel,
         admin: state.admin,
         listausuarios: state.listausuarios,
+        evaluacionesadmin: state.evaluacionesadmin,
+        calificacionesadmin: state.calificacionesadmin,
         loginUsuario,
         loginAdmin,
         obtenerListaUsuarios,

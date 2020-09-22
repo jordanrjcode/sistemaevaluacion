@@ -19,6 +19,8 @@ import {
   CERRAR_SESION_ADMIN,
   OBTENER_LISTA_USUARIOS_EXITO,
   OBTENER_LISTA_USUARIOS_ERROR,
+  OBTENER_ADMIN_EVALUACIONES_EXITO,
+  OBTENER_ADMIN_CALIFICACIONES_EXITO,
   CARGANDO,
   OBTENER_EVALUACIONES_EXITO,
 } from "../../Types/index";
@@ -95,6 +97,18 @@ export default (state, action) => {
         ...state,
         listausuarios: action.payload.estudiantes,
         cargando: false,
+      };
+    case OBTENER_ADMIN_EVALUACIONES_EXITO:
+      return {
+        ...state,
+        cargando: false,
+        evaluacionesadmin: action.payload.evaluaciones,
+      };
+    case OBTENER_ADMIN_CALIFICACIONES_EXITO:
+      return {
+        ...state,
+        cargando: false,
+        calificacionesadmin: action.payload.calificaciones,
       };
     case CARGANDO:
       return { ...state, cargando: true };

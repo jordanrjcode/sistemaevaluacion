@@ -22,6 +22,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
   } = authContext;
   const { alerta, mostrarAlerta } = alertaContext;
   const [carreraSeleccionada, setCarreraSeleccionada] = useState("");
+  const [evaluacionSeleccionada, setEvaluacionSeleccionada] = useState("");
   const [cursoSeleccionado, setCursoSeleccionado] = useState("");
   const [preguntas, setPreguntas] = useState([]);
   const [titleEvaluacion, setTitleEvaluacion] = useState("");
@@ -53,6 +54,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
     case "calificacionEstudiantes":
       componente = (
         <Calificaciones
+          setEvaluacionSeleccionada={setEvaluacionSeleccionada}
           cursoSeleccionado={cursoSeleccionado}
           carreraSeleccionada={carreraSeleccionada}
         />
@@ -72,7 +74,8 @@ const Listadocursos = ({ setOpcion, opcion }) => {
         agregandoEvaluaciones();
         break;
       case "calificacionEstudiantes":
-        obtenerCalificaciones();
+        obteniendoCalificaciones();
+        break;
       default:
         break;
     }
@@ -133,9 +136,12 @@ const Listadocursos = ({ setOpcion, opcion }) => {
       mostrarAlerta("Escoja un curso", "alerta__error");
       return;
     }
+    if (!evaluacionSeleccionada.trim()) {
+      mostrarAlerta("Escoja una evaluacion", "alerta__error");
+      return;
+    }
     obtenerCalificaciones({
-      curso: cursoSeleccionado,
-      carrera: carreraSeleccionada,
+      evaluacion: evaluacionSeleccionada,
     });
   };
 
