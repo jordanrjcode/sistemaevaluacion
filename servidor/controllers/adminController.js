@@ -115,9 +115,7 @@ exports.obtenerEvaluaciones = async (req, res) => {
 exports.obtenerCalificaciones = async (req, res) => {
   const { evaluacion } = req.params;
   try {
-    let calificaciones = await Calificacion.find({
-      $and: [{ curso }, { carrera }],
-    });
+    let calificaciones = await Calificacion.find({ evaluacion });
 
     if (!calificaciones) {
       return res
