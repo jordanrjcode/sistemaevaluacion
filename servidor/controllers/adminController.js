@@ -99,7 +99,7 @@ exports.agregarEvaluacion = async (req, res) => {
 exports.obtenerEvaluaciones = async (req, res) => {
   const { curso, carrera } = req.params;
   try {
-    let evaluaciones = Evaluacion.find({
+    let evaluaciones = await Evaluacion.find({
       $and: [{ curso }, { carrera }],
     });
     if (!evaluaciones) {
