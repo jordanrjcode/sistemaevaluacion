@@ -336,6 +336,7 @@ const AuthState = (props) => {
         obtenerEvaluaciones,
         finalizarEvaluacion,
         obtenerCalificaciones,
+        obtenerEvaluacionesAdmin,
       }}
     >
       {props.children}
