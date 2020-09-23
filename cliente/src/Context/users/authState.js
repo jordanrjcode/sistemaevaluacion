@@ -148,9 +148,9 @@ const AuthState = (props) => {
       const respuesta = await clienteAxios.get(
         `/api/admin/calificaciones/${evaluacion}`
       );
-      console.log(respuesta.data);
       dispatch({
         type: OBTENER_ADMIN_CALIFICACIONES_EXITO,
+        payload: respuesta.data,
       });
     } catch (error) {
       console.log(error.response);
