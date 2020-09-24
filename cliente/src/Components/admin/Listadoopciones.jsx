@@ -82,7 +82,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
         obteniendoCalificaciones();
         break;
       case "listadoEstudiantes":
-        obtenerListaEstudiantes();
+        obteniendoAlumnos();
         break;
       default:
         break;
@@ -150,6 +150,21 @@ const Listadocursos = ({ setOpcion, opcion }) => {
     }
     obtenerCalificaciones({
       evaluacion: evaluacionSeleccionada,
+    });
+  };
+
+  const obteniendoAlumnos = () => {
+    if (!carreraSeleccionada.trim()) {
+      mostrarAlerta("Escoja una carrera", "alerta__error");
+      return;
+    }
+    if (!cursoSeleccionado.trim()) {
+      mostrarAlerta("Escoja un curso", "alerta__error");
+      return;
+    }
+    obtenerListaEstudiantes({
+      curso: cursoSeleccionado,
+      carrera: carreraSeleccionada,
     });
   };
 
