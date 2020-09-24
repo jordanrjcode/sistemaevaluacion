@@ -329,15 +329,13 @@ const AuthState = (props) => {
     const { carrera, curso } = data;
     try {
       const respuesta = await clienteAxios.get(
-        `/api/admin/estudiantes/${curso}/${carrera}`
+        `/api/admin/estudiantes/${carrera}/${curso}`
       );
-      console.log(respuesta.data);
-      // dispatch({
-      //   type: OBTENER_ADMIN_LISTA_USUARIOS_EXITO,
-      //   payload: respuesta.data.estudiantes,
-      // });
+      dispatch({
+        type: OBTENER_ADMIN_LISTA_USUARIOS_EXITO,
+        payload: respuesta.data.estudiantes,
+      });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: OBTENER_LISTA_USUARIOS_ERROR,
       });
