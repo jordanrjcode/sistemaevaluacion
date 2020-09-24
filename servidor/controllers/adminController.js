@@ -298,14 +298,21 @@ exports.leerArchivo = (req, res) => {
 exports.obtenerListaAlumnos = async (req, res) => {
   const { carrera, curso } = req.params;
   try {
-    const estudiantes = await Usuario.find({
+    const estudiantesDB = await Usuario.find({
       $and: [{ curso }, { carrera }],
     });
 
     if (estudiantes.length < 1)
       return res.status(404).json({ msg: "No hay alumnos en este curso" });
 
-    res.status(200).json({ estudiantes });
+    let cursoDB = await Curso.findById(curso);
+    let carreraDB = await Carrera.findById(carrera);
+    estudiantesDB.map((estudents) => {
+      estudents.curso = cursoDB.nombre;
+      estudents.carrera = carreraDB.nombre;
+    });
+
+    res.status(200).json({ estudiantesDB });
   } catch (error) {
     res.status(500).json({ msg: "Hubo un error" });
   }
