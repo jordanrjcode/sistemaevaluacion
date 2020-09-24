@@ -302,7 +302,7 @@ exports.obtenerListaAlumnos = async (req, res) => {
       $and: [{ curso }, { carrera }],
     });
 
-    if (estudiantes.length < 1)
+    if (estudiantesDB.length < 1)
       return res.status(404).json({ msg: "No hay alumnos en este curso" });
 
     let cursoDB = await Curso.findById(curso);
