@@ -18,7 +18,7 @@ const ListadoAlumnos = () => {
             <th className="lista__campos">Email</th>
           </tr>
           {listaestudiantesadmin.map((estudiante) => (
-            <tr key={estududiante._id}>
+            <tr key={estudiante._id}>
               <td className="lista__registros">{estudiante.nombre}</td>
               <td className="lista__registros">{estudiante.cedula}</td>
               <td className="lista__registros">{estudiante.curso}</td>
