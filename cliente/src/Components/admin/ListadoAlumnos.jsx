@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./ListadoAlumnos.css";
 import AuthContext from "../../Context/users/authContext";
-const ListadoAlumnos = () => {
+const ListadoAlumnos = ({ cursoSeleccionado, carreraSeleccionada }) => {
   const authContext = useContext(AuthContext);
   const { listaestudiantesadmin } = authContext;
 
@@ -21,8 +21,8 @@ const ListadoAlumnos = () => {
             <tr key={estudiante._id}>
               <td className="lista__registros">{estudiante.nombre}</td>
               <td className="lista__registros">{estudiante.cedula}</td>
-              <td className="lista__registros">{estudiante.curso}</td>
-              <td className="lista__registros">{estudiante.carrera}</td>
+              <td className="lista__registros">{cursoSeleccionado}</td>
+              <td className="lista__registros">{carreraSeleccionada}</td>
               <td className="lista__registros">
                 {estudiante.emailInstitucional}
               </td>

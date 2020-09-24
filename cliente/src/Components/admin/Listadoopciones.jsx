@@ -63,7 +63,12 @@ const Listadocursos = ({ setOpcion, opcion }) => {
       );
       break;
     case "listadoEstudiantes":
-      componente = <ListadoAlumnos />;
+      componente = (
+        <ListadoAlumnos
+          cursoSeleccionado={cursoSeleccionado}
+          carreraSeleccionada={carreraSeleccionada}
+        />
+      );
       break;
     default:
       componente = null;
