@@ -6,6 +6,7 @@ import AuthContext from "../../Context/users/authContext";
 import AlertaContext from "../../Context/alerta/alertaContext";
 import "./Listadoopciones.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ListadoAlumnos from "./ListadoAlumnos";
 const Listadocursos = ({ setOpcion, opcion }) => {
   const authContext = useContext(AuthContext);
   const alertaContext = useContext(AlertaContext);
@@ -19,6 +20,7 @@ const Listadocursos = ({ setOpcion, opcion }) => {
     obtenerCursos,
     agregandoAlumnos,
     agregarEvaluacion,
+    obtenerListaEstudiantes,
   } = authContext;
   const { alerta, mostrarAlerta } = alertaContext;
   const [carreraSeleccionada, setCarreraSeleccionada] = useState("");
@@ -60,6 +62,9 @@ const Listadocursos = ({ setOpcion, opcion }) => {
         />
       );
       break;
+    case "listadoEstudiantes":
+      componente = <ListadoAlumnos />;
+      break;
     default:
       componente = null;
       break;
@@ -75,6 +80,9 @@ const Listadocursos = ({ setOpcion, opcion }) => {
         break;
       case "calificacionEstudiantes":
         obteniendoCalificaciones();
+        break;
+      case "listadoEstudiantes":
+        obtenerListaEstudiantes();
         break;
       default:
         break;

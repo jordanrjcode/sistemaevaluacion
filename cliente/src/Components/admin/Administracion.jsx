@@ -4,6 +4,7 @@ import "./Administracion.css";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 const Administracion = () => {
   const [opcion, setOpcion] = useState("");
 
@@ -23,6 +24,15 @@ const Administracion = () => {
             }}
           >
             Crear Evaluacion <AssignmentIcon fontSize="large" />
+          </button>
+          <button
+            className="administracion__button"
+            name="listadoEstudiantes"
+            onClick={(e) => {
+              click(e.target.name);
+            }}
+          >
+            Listado Estudiantes <PeopleAltIcon fontSize="large" />
           </button>
           <button
             className="administracion__button"

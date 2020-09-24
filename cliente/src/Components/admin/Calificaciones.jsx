@@ -49,35 +49,30 @@ const Calificaciones = ({
       <div className="calificaciones__grid">
         {calificacionesadmin ? calificacionesadmin[0].nombre : null}
         <table>
-          <tr>
-            <th className="item__head">Nombre</th>
-            <th className="item__head">Deshonestidad</th>
-            <th className="item__head">Puntos menos</th>
-            <th className="item__head">Nota Final</th>
-          </tr>
-          {calificacionesadmin
-            ? calificacionesadmin.map((calificacion) => (
-                // <div className="grid__item" key={calificacion._id}>
-                //     <p className="item__nombre">
-                //       {calificacion.nombreEstudiante} -{" "}
-                //     </p>
-                //     <p className="item__nota">{calificacion.notaFinal} </p>
-                //     <p className="item__deshonestidad">
-                //       {calificacion.deshonestidad}
-                //     </p>
-                //   </div>
-                <tr>
-                  <td className="item__registro">
-                    {calificacion.nombreEstudiante}
-                  </td>
-                  <td className="item__registro">
-                    {calificacion.deshonestidad}
-                  </td>
-                  <td className="item__registro">{calificacion.puntosMenos}</td>
-                  <td className="item__registro">{calificacion.notaFinal}</td>
-                </tr>
-              ))
-            : null}
+          <tbody>
+            <tr>
+              <th className="item__head">Nombre</th>
+              <th className="item__head">Deshonestidad</th>
+              <th className="item__head">Puntos menos</th>
+              <th className="item__head">Nota Final</th>
+            </tr>
+            {calificacionesadmin
+              ? calificacionesadmin.map((calificacion) => (
+                  <tr key={calificacion._id}>
+                    <td className="item__registro">
+                      {calificacion.nombreEstudiante}
+                    </td>
+                    <td className="item__registro">
+                      {calificacion.deshonestidad}
+                    </td>
+                    <td className="item__registro">
+                      {calificacion.puntosMenos}
+                    </td>
+                    <td className="item__registro">{calificacion.notaFinal}</td>
+                  </tr>
+                ))
+              : null}
+          </tbody>
         </table>
       </div>
     </>

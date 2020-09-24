@@ -26,6 +26,7 @@ import {
   OBTENER_LISTA_USUARIOS_EXITO,
   OBTENER_ADMIN_EVALUACIONES_EXITO,
   OBTENER_ADMIN_CALIFICACIONES_EXITO,
+  OBTENER_ADMIN_LISTA_USUARIOS_EXITO,
   ENVIAR_EVALUACION,
   CARGANDO,
 } from "../../Types/index";
@@ -44,6 +45,7 @@ const AuthState = (props) => {
     listausuarios: null,
     evaluacionesadmin: null,
     calificacionesadmin: null,
+    listaestudiantesadmin: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, stateInicial);
 
@@ -323,6 +325,25 @@ const AuthState = (props) => {
     }
   };
 
+  const obtenerListaEstudiantes = async (data) => {
+    const { carrera, curso } = data;
+    try {
+      const respuesta = await clienteAxios.get(
+        `/api/admin/estudiantes/${curso}/${carrera}`
+      );
+      console.log(respuesta.data);
+      // dispatch({
+      //   type: OBTENER_ADMIN_LISTA_USUARIOS_EXITO,
+      //   payload: respuesta.data.estudiantes,
+      // });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: OBTENER_LISTA_USUARIOS_ERROR,
+      });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -339,6 +360,7 @@ const AuthState = (props) => {
         listausuarios: state.listausuarios,
         evaluacionesadmin: state.evaluacionesadmin,
         calificacionesadmin: state.calificacionesadmin,
+        listaestudiantesadmin: state.listaestudiantesadmin,
         loginUsuario,
         loginAdmin,
         obtenerListaUsuarios,
@@ -355,6 +377,7 @@ const AuthState = (props) => {
         finalizarEvaluacion,
         obtenerCalificaciones,
         obtenerEvaluacionesAdmin,
+        obtenerListaEstudiantes,
       }}
     >
       {props.children}
