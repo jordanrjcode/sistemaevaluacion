@@ -113,4 +113,10 @@ router.get(
   adminController.obtenerCalificaciones
 );
 
+router.get(
+  "/estudiantes/:carrera/:curso",
+  auth,
+  adminController.obtenerListaAlumnos
+);
+
 module.exports = router;

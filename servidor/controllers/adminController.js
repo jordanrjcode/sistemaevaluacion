@@ -294,3 +294,19 @@ exports.leerArchivo = (req, res) => {
   let datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
   res.status(200).json({ datos });
 };
+
+exports.obtenerListaAlumnos = async (req, res) => {
+  const { carrera, curso } = req.params;
+  try {
+    const estudiantes = await Usuario.find({
+      $and: [{ curso }, { carrera }],
+    });
+
+    if (estudiantes.length < 1)
+      return res.status(404).json({ msg: "No hay alumnos en este curso" });
+
+    res.status(200).json({ estudiantes });
+  } catch (error) {
+    res.status(500).json({ msg: "Hubo un error" });
+  }
+};
