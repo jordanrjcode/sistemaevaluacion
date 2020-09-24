@@ -333,7 +333,7 @@ const AuthState = (props) => {
       );
       dispatch({
         type: OBTENER_ADMIN_LISTA_USUARIOS_EXITO,
-        payload: respuesta.data.estudiantes,
+        payload: respuesta.data.estudiantesDB,
       });
     } catch (error) {
       dispatch({
