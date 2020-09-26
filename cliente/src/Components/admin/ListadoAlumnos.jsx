@@ -21,8 +21,8 @@ const ListadoAlumnos = ({ cursoSeleccionado, carreraSeleccionada }) => {
             <tr key={estudiante._id}>
               <td className="lista__registros">{estudiante.nombre}</td>
               <td className="lista__registros">{estudiante.cedula}</td>
-              <td className="lista__registros">{cursoSeleccionado}</td>
-              <td className="lista__registros">{carreraSeleccionada}</td>
+              <td className="lista__registros">{estudiante.curso}</td>
+              <td className="lista__registros">{estudiante.carrera}</td>
               <td className="lista__registros">
                 {estudiante.emailInstitucional}
               </td>
