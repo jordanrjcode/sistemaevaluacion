@@ -305,7 +305,20 @@ exports.obtenerListaAlumnos = async (req, res) => {
     if (estudiantesDB.length < 1)
       return res.status(404).json({ msg: "No hay alumnos en este curso" });
 
-    res.status(200).json({ estudiantesDB });
+    let cursoDB = await Curso.findById(curso);
+    let carreraDB = await Carrera.findById(carrera);
+    let estudiantes = [];
+    estudiantesDB.map((estudianteDb) => {
+      let doc = {
+        nombre: estudianteDb.nombre,
+        emailInstitucional: estudianteDb.emailInstitucional,
+        carrera: carreraDB.nombre,
+        curso: cursoDB.nombre,
+        cedula: estudianteDb.cedula,
+      };
+      estudiantes.push(doc);
+    });
+    res.status(200).json({ estudiantesDB: estudiantes });
   } catch (error) {
     res.status(500).json({ msg: "Hubo un error" });
   }
