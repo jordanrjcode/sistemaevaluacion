@@ -1,0 +1,36 @@
+.administracion {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media only screen and (min-width: 576px) {
+  .administracion {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .administracion {
+    width: 65%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .administracion {
+    width: 40%;
+  }
+}
+.administracion__button {
+  display: flex;
+  padding: 15px;
+  border: none;
+  outline: none;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px auto;
+  width: 150px;
+  color: white;
+  font-weight: bolder;
+  background: #3e3e3e;
+  cursor: pointer;
+}

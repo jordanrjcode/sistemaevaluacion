@@ -1,0 +1,45 @@
+.admin {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 125px;
+}
+.admin__title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.admin__input {
+  display: block;
+  margin: 15px auto;
+  width: 90%;
+  outline: none;
+  padding: 8px;
+  border: 1px solid gray;
+  color: gray;
+}
+.admin__input::placeholder {
+  color: gray;
+}
+.admin__button {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  background: gray;
+  color: white;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+.alerta.alerta__error {
+  background: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,56 @@
+.formulario__evaluacion {
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  margin: 25px auto;
+}
+
+.evaluacion__title {
+  font-size: 1.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.evaluacion__input {
+  padding: 10px;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+  width: 95%;
+  margin: 20px auto;
+  display: block;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #3e3e3e;
+}
+.evaluacion__button {
+  padding: 10px;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background: rgb(59, 55, 55);
+  border: none;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+.alerta.alerta__error {
+  background: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+.alerta__ok {
+  background: #55e750;
+}
